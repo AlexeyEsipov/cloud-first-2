@@ -4,9 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.job4j.first.model.Person;
 import ru.job4j.first.service.FirstService;
 
 @RestController
@@ -30,5 +29,10 @@ public class FirstController {
     public ResponseEntity<String> sayHello() {
         log.info("вызов метода hi");
         return new ResponseEntity<>(firstService.getWord(), HttpStatus.OK);
+    }
+
+    @PostMapping("/person/{personId}")
+    public ResponseEntity<String> createPerson(@PathVariable Long personId, @RequestBody Person person) {
+        return new ResponseEntity<>(person.getName(), HttpStatus.OK);
     }
 }
