@@ -37,7 +37,12 @@ public class FirstController {
     }
 
     @GetMapping("/person/exc")
-    public ResponseEntity<String> exc400() {
+    public ResponseEntity<String> exc() {
         return ResponseEntity.status(400).build();
+    }
+
+    @GetMapping("/person/head")
+    public ResponseEntity<String> head(@RequestHeader(name = "X-Name-Courses", required = true) String nameCourses) {
+        return ResponseEntity.ok(nameCourses);
     }
 }
