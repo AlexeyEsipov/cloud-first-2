@@ -35,4 +35,9 @@ public class FirstController {
     public ResponseEntity<String> createPerson(@PathVariable Long personId, @RequestBody Person person) {
         return new ResponseEntity<>(person.getName(), HttpStatus.OK);
     }
+
+    @GetMapping("/person/exc")
+    public ResponseEntity<String> exc400() {
+        return ResponseEntity.status(400).build();
+    }
 }
