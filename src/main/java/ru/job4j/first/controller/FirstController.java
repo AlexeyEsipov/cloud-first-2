@@ -32,7 +32,8 @@ public class FirstController {
     }
 
     @PostMapping("/person/{personId}")
-    public ResponseEntity<String> createPerson(@PathVariable Long personId, @RequestBody Person person) {
+    public ResponseEntity<String> createPerson(@PathVariable Long personId,
+                                               @RequestBody Person person) {
         return new ResponseEntity<>(person.getName(), HttpStatus.OK);
     }
 
@@ -42,7 +43,8 @@ public class FirstController {
     }
 
     @GetMapping("/person/head")
-    public ResponseEntity<String> head(@RequestHeader(name = "X-Name-Courses", required = true) String nameCourses) {
+    public ResponseEntity<String> head(@RequestHeader(name = "X-Name-Courses",
+                                       required = true) String nameCourses) {
         return ResponseEntity.ok(nameCourses);
     }
 }
